@@ -1,0 +1,13 @@
+server:
+  port: 8890
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/dzu?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+#配置mapper的映射文件的位置
+mybatis:
+  mapper-locations: classpath:mappers/*Mapper.xml
+
+
