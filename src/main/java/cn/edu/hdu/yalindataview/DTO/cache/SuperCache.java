@@ -1,15 +1,15 @@
-package cn.edu.hdu.yalindataview.cache;
+package cn.edu.hdu.yalindataview.DTO.cache;
 
 import cn.edu.hdu.yalindataview.DTO.DTO;
 import lombok.Data;
-//import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 /**
  * 一个页面的规定一个容器，容器用单例
  */
-//@Log4j2
+@Slf4j
 @Data
 @EnableScheduling
 public abstract class SuperCache {
@@ -26,7 +26,7 @@ public abstract class SuperCache {
     /**
      * 用于缓存
      */
-    private DTO cache;
+    protected DTO cache;
 
     /**
      * 更新缓存
@@ -38,14 +38,17 @@ public abstract class SuperCache {
      */
     @Scheduled(cron = "* * * * * ?")
     protected void doTask() {
-        updateCache();
-
+        try {
+            updateCache();
+            this.version++;
+        }catch(Exception ex){
+            //更新失败不加版本，updateCache方法内不可以直接处理业务性异常
+        }
         //错峰，一分钟更新一个页面的数据
-        //log.error("sasad");
         try {
             Thread.sleep(60 * 1000);
         }catch (InterruptedException interruptedException){
-            //log.error(interruptedException.getMessage());
+            log.error(interruptedException.getMessage());
         }
     }
 }
