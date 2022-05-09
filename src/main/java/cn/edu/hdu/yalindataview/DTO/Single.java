@@ -6,9 +6,9 @@ import lombok.Data;
  * 单值，可用于标题
  */
 @Data
-public class SingleDTO {
+public class Single {
     public String x;
-    public SingleDTO(String x){
+    public Single(String x){
         this.x=x;
     }
 }

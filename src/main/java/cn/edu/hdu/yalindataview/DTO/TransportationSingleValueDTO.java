@@ -1,46 +1,48 @@
 package cn.edu.hdu.yalindataview.DTO;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class TransportationSingleValueDTO {
+public class TransportationSingleValueDTO extends DTO{
     /**
      * 今日运营里程数
      */
-    BinaryDTO TodayOperatingMileage;
+    Binary TodayOperatingMileage;
     /**
      * 运营状态
      */
-    SingleDTO OperationalStatus;
+    Single OperationalStatus;
     /**
      * 今日运营人次
      */
-    BinaryDTO TodayOperatingPeople;
+    Binary TodayOperatingPeople;
     /**
      * 运营总里程数
      */
-    BinaryDTO TotalOperatingMileage;
+    Binary TotalOperatingMileage;
     /**
      * 总运营人次
      */
-    BinaryDTO TotalOperatingPeople;
+    Binary TotalOperatingPeople;
     /**
      * 停车数据统计
      */
-    TernaryDTO ParkingStatistics;
+    Ternary ParkingStatistics;
     /**
      * 停车数据图表
      */
-    TernaryDTO ParkingInfographics;
+    Ternary ParkingInfographics;
 
     public static TransportationSingleValueDTO mock(){
         TransportationSingleValueDTO mockDTO=new TransportationSingleValueDTO();
-        mockDTO.setTodayOperatingMileage(new BinaryDTO("5"));
-        mockDTO.setTodayOperatingPeople(new BinaryDTO("11"));
-        mockDTO.setOperationalStatus(new SingleDTO("正常运营中"));
-        mockDTO.setTotalOperatingMileage(new BinaryDTO("155"));
-        mockDTO.setTotalOperatingPeople(new BinaryDTO("1635"));
-        mockDTO.setParkingStatistics(new TernaryDTO("2118","1732","总数"));
+        mockDTO.setTodayOperatingMileage(new Binary("5"));
+        mockDTO.setTodayOperatingPeople(new Binary("11"));
+        mockDTO.setOperationalStatus(new Single("正常运营中"));
+        mockDTO.setTotalOperatingMileage(new Binary("155"));
+        mockDTO.setTotalOperatingPeople(new Binary("1635"));
+        mockDTO.setParkingStatistics(new Ternary("2118","1732","总数"));
         return mockDTO;
     }
 }

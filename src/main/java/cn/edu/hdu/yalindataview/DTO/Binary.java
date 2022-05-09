@@ -6,14 +6,14 @@ import lombok.Data;
  * 二元组，可用于数字翻牌器
  */
 @Data
-public class BinaryDTO {
+public class Binary {
     public String x;
     public String y;
-    public BinaryDTO(String x, String y){
+    public Binary(String x, String y){
         this.x=x;
         this.y=y;
     }
-    public BinaryDTO(String y){
+    public Binary(String y){
         this.x="";
         this.y=y;
     }
